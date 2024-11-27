@@ -1,7 +1,7 @@
 import random
 
 
-def simulate_game_eq(player1_chance: float, player1_money: int, player2_money: int):
+def simulate_game_eq1(player1_chance: float, player1_money: int, player2_money: int):
     p = player1_chance
     q = 1 - p
     a = player1_money
@@ -18,7 +18,7 @@ def simulate_game_eq(player1_chance: float, player1_money: int, player2_money: i
     }
 
 
-def simulate_game(
+def simulate_game1(
         player1_chance: float,
         player1_money: int,
         player2_money: int
