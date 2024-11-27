@@ -32,8 +32,8 @@ for n in N:
     # Plot results
     plt.figure(figsize=(10, 6))
     plt.bar(x_values, y_values, width=1.0, edgecolor="black")
-    plt.xlabel("Amount of Money (Player A)")
-    plt.ylabel("Probability")
-    plt.title("Probability Distribution of Player A's Money After Simulations")
+    plt.xlabel("k")
+    plt.ylabel("P(k)")
+    plt.title("Kapitał (k) gracza A po N turach")
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.show()

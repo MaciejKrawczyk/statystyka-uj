@@ -24,6 +24,11 @@ class GameOutcome2:
     no_of_playerA_money_per_turn_per_game: list[list[int]]
     no_of_playerB_money_per_turn_per_game: list[list[int]]
 
+@dataclass
+class GameOutcomeEq:
+    probability_of_playerB_winning: float
+    probability_of_playerA_winning: float
+
 
 def get_probability_of_winning_simulation(playerA_chance: float, playerA_money: int, playerB_money: int,
                                           no_of_games=100, no_of_turns_per_game_loop=1000000000) -> GameOutcome2:
@@ -113,7 +118,7 @@ def simulate_game(
 
 
 def get_probability_of_winning_equation(playerA_chance_of_winning: float, playerA_money: int,
-                                        playerB_money: int) -> GameOutcome2:
+                                        playerB_money: int) -> GameOutcomeEq:
     p = playerA_chance_of_winning
     q = 1 - p  # playerB_chance
     a = playerA_money
@@ -123,7 +128,7 @@ def get_probability_of_winning_equation(playerA_chance_of_winning: float, player
         pRuinA = ((q / p) ** a - (q / p) ** M) / (1 - (q / p) ** M)
     else:
         pRuinA = (M - a) / M
-    return GameOutcome2(
+    return GameOutcomeEq(
         probability_of_playerB_winning=pRuinA,
         probability_of_playerA_winning=1 - pRuinA,
     )

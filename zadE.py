@@ -5,7 +5,7 @@ b = 50
 # Lmax z 1000 gier
 # wykres: Lmax do pA
 import matplotlib.pyplot as plt
-from simulation_functions import simulate_game, get_probability_of_winning_simulation
+from simulation_functions import get_probability_of_winning_simulation
 
 no_of_games = 10000
 pA_values = [0.05 + i * 0.05 for i in range(18)]
@@ -20,8 +20,8 @@ for pA in pA_values:
 plt.figure(figsize=(10, 6))
 plt.plot(pA_values, Lmax_values, marker='o', color='blue', label='Lmax vs pA')
 plt.title('Maksymalna długość rozgrywki Lmax w zależności od pA')
-plt.xlabel('pA (szansa wygranej gracza A)')
-plt.ylabel('Lmax (maksymalna liczba tur)')
+plt.xlabel('pA')
+plt.ylabel('Lmax')
 plt.grid(True)
 plt.legend()
 plt.show()

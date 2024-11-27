@@ -1,8 +1,7 @@
 # Liczba tur (L) do ukończenia gry
 from collections import Counter
 import matplotlib.pyplot as plt
-from simulation_functions import simulate_game, get_probability_of_winning_simulation
-import numpy as np
+from simulation_functions import get_probability_of_winning_simulation
 
 a = 50
 b = 50
@@ -24,8 +23,8 @@ for i in range(len(pA)):
     # Plotting
     plt.figure(figsize=(10, 6))
     plt.bar(turns, probabilities, width=1.0, edgecolor='black', align='center')
-    plt.title(f"Probability Distribution of Turns in a Game\n(Player A Chance = {pA[i]})", fontsize=14)
-    plt.xlabel("Number of Turns", fontsize=12)
-    plt.ylabel("Probability", fontsize=12)
+    plt.title(f"Liczba tur do ukończenia gry (szansa gracza A = {pA[i]})", fontsize=14)
+    plt.xlabel("L", fontsize=12)
+    plt.ylabel("P(L)", fontsize=12)
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.show()

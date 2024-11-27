@@ -23,11 +23,11 @@ for i in range(len(pA_values)):
 ruins_counts_eq = [sum(no_of_ruins_simulation_eq[pA_values[i]]) for i in range(len(pA_values))]
 
 plt.figure(figsize=(12, 7))
-plt.plot(pA_values, ruins_counts, marker='o', linestyle='-', color='purple', label='Number of Games Lost by Player A simulation')
-plt.plot(pA_values, ruins_counts_eq, marker='o', linestyle='-', color='blue', label='Number of Games Lost by Player A equation')
-plt.title('Number of Games Lost by Player A vs. Player A Win Probability (pA)')
-plt.xlabel('pA (Win Probability of Player A)')
-plt.ylabel('Number of Games Lost by Player A')
+plt.plot(pA_values, ruins_counts, marker='o', linestyle='-', color='purple', label='wynik wyliczony symulacyjnie')
+plt.plot(pA_values, ruins_counts_eq, marker='o', linestyle='-', color='blue', label='wynik wyliczony za pomocą równania')
+plt.title('Ruina gracza dla 2 graczy A,B')
+plt.ylabel('p ruiny gracza A')
+plt.xlabel('pA')
 plt.grid(True)
 plt.legend()
 
