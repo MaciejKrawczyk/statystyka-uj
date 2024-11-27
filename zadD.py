@@ -1,5 +1,5 @@
 # Trajektoria liczby wygranych dla jednego z dwóch graczy A,B
-from simulation_functions import simulate_game
+from simulation_functions import get_probability_of_winning_simulation
 import matplotlib.pyplot as plt
 
 a = 10
@@ -10,17 +10,32 @@ pA = [0.2, 0.5, 0.8]
 # Trajektorie dla 3 gier najlepiej na jednym wykresie
 
 
-# Simulate and plot for each probability
-for pA_value in pA:
-    for game_no in range(3):  # Simulate three games for each probability
-        outcome = simulate_game(pA_value, a, b, max_turns=50)
-        cumulative_wins_A = [sum(outcome.playerA_won_turns[:i]) for i in range(1, len(outcome.playerA_won_turns) + 1)]
-        plt.plot(range(1, len(cumulative_wins_A) + 1), cumulative_wins_A, label=f'pA={pA_value}, Game {game_no + 1}')
+# Plot configurations
+plt.figure(figsize=(12, 8))
 
-# Labeling the plot
-plt.title('Cumulative Wins for Player A Over Turns')
-plt.xlabel('Turn Number')
-plt.ylabel('Cumulative Wins for Player A')
-plt.legend()
-plt.grid(True)
-plt.show()
+# Loop over probabilities pA
+for prob in pA:
+    # Run the simulation
+    outcome = get_probability_of_winning_simulation(prob, a, b)
+
+    # Generate trajectories for 3 games
+    for game_idx in range(3):  # Assuming `outcome.no_of_turns_won_by_playerA_per_game` stores data for multiple games
+        results = []
+        cumulative_wins = 0  # Keep track of cumulative wins
+
+        # Process each turn in the game
+        for turn in outcome.no_of_turns_won_by_playerA_per_game[game_idx]:
+            cumulative_wins += 1 if turn else 0
+            results.append(cumulative_wins)
+
+        # Plot the trajectory for the current game
+        plt.plot(range(1, len(results) + 1), results, label=f'pA={prob}, game={game_idx + 1}')
+
+    # Finalize the plot
+    plt.title('Liczba wygranych przez wybranego gracza do numeru tury (dla różnych pA i gier)')
+    plt.xlabel('Numer tury')
+    plt.ylabel('Liczba wygranych przez gracza A')
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()

@@ -23,6 +23,8 @@ class GameOutcome2:
     no_of_games: int
     no_of_playerA_money_per_turn_per_game: list[list[int]]
     no_of_playerB_money_per_turn_per_game: list[list[int]]
+    no_of_turns_won_by_playerA_per_game: list[list[bool]]
+    no_of_turns_won_by_playerB_per_game: list[list[bool]]
 
 @dataclass
 class GameOutcomeEq:
@@ -38,6 +40,8 @@ def get_probability_of_winning_simulation(playerA_chance: float, playerA_money: 
     no_of_turns_per_game = []
     no_of_playerA_money_per_turn_per_game = []
     no_of_playerB_money_per_turn_per_game = []
+    no_of_turns_won_by_playerA_per_game = []
+    no_of_turns_won_by_playerB_per_game = []
 
     for _ in range(no_of_games):
         current_playerA_money = playerA_money
@@ -45,6 +49,8 @@ def get_probability_of_winning_simulation(playerA_chance: float, playerA_money: 
         turns = 0
         playerA_money_per_turn = []
         playerB_money_per_turn = []
+        turns_won_by_playerA = []
+        turns_won_by_playerB = []
 
         while turns < no_of_turns_per_game_loop:
             if current_playerA_money == 0:
@@ -57,15 +63,21 @@ def get_probability_of_winning_simulation(playerA_chance: float, playerA_money: 
             if random() < playerA_chance:
                 current_playerA_money += 1
                 current_playerB_money -= 1
+                turns_won_by_playerA.append(True)
+                turns_won_by_playerB.append(False)
             else:
                 current_playerA_money -= 1
                 current_playerB_money += 1
+                turns_won_by_playerA.append(False)
+                turns_won_by_playerB.append(True)
 
             playerA_money_per_turn.append(current_playerA_money)
             playerB_money_per_turn.append(current_playerB_money)
             turns += 1
 
         no_of_turns_per_game.append(turns)
+        no_of_turns_won_by_playerA_per_game.append(turns_won_by_playerA)
+        no_of_turns_won_by_playerB_per_game.append(turns_won_by_playerB)
         no_of_playerA_money_per_turn_per_game.append(playerA_money_per_turn)
         no_of_playerB_money_per_turn_per_game.append(playerB_money_per_turn)
     print(f"games_won_A: {games_won_by_playerA}, games_won_B: {games_won_by_playerB}")
@@ -76,6 +88,8 @@ def get_probability_of_winning_simulation(playerA_chance: float, playerA_money: 
         no_of_games=no_of_games,
         no_of_playerA_money_per_turn_per_game=no_of_playerA_money_per_turn_per_game,
         no_of_playerB_money_per_turn_per_game=no_of_playerB_money_per_turn_per_game,
+        no_of_turns_won_by_playerA_per_game=no_of_turns_won_by_playerA_per_game,
+        no_of_turns_won_by_playerB_per_game=no_of_turns_won_by_playerB_per_game,
     )
 
 
