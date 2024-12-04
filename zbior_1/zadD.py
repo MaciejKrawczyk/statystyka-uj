@@ -29,7 +29,8 @@ for prob in pA:
             results.append(cumulative_wins)
 
         # Plot the trajectory for the current game
-        plt.plot(range(1, len(results) + 1), results, label=f'pA={prob}, game={game_idx + 1}')
+        # plt.plot(range(1, len(results) + 1), results, label=f'pA={prob}, game={game_idx + 1}')
+        plt.step(range(1, len(results) + 1), results, label=f'pA={prob}, game={game_idx + 1}')
 
     # Finalize the plot
     plt.title('Liczba wygranych przez wybranego gracza do numeru tury (dla różnych pA i gier)')
