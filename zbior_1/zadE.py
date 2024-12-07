@@ -7,7 +7,7 @@ b = 50
 import matplotlib.pyplot as plt
 from simulation_functions import get_probability_of_winning_simulation
 
-no_of_games = 10000
+no_of_games = 1000
 pA_values = [0.05 + i * 0.05 for i in range(18)]
 Lmax_values = []
 
