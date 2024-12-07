@@ -5,17 +5,8 @@ import matplotlib.pyplot as plt
 
 import consts
 
-# a) Wyznaczyć macierz przejść P
-
 P = consts.P
-
-print(P)
-
-# b) Znaleźć rozkład graniczny/stan stacjonarny na podstawie PN dla dużych N
-
 P15 = np.linalg.matrix_power(P, 15)
-
-print(P15)
 
 # c) Sprawdzić kryterium zbieżności typu PN - PN-1 < ε
 
@@ -49,6 +40,7 @@ def prepare_data_for_plot(iterations, state_i, state_j):
         current_p = np.linalg.matrix_power(P, i)[state_i, state_j]
         P_p_n.append(current_p)
     return P_p_n, current_p
+
 
 def create_plot_A(i):
     data = [prepare_data_for_plot(15, j, i) for j in range(3)]
@@ -89,5 +81,6 @@ def create_plot_A_once():
     plt.grid(True)
     plt.tight_layout()
     plt.show()
+
 
 create_plot_A_once()
