@@ -83,10 +83,12 @@ def plot_convergence(convergence, n_max, start_node):
     plt.grid()
     plt.show()
 
-# Parametry symulacji
-n_max = 10_000
+if __name__ == '__main__':
 
-for start_node in range(3):
-    visit_counts, convergence = simulate_random_walk(start_node, n_max)
-    print(f'Start z węzła {start_node} - Odwiedziny: {visit_counts}')
-    plot_convergence(convergence, n_max, start_node)
+    # Parametry symulacji
+    n_max = 10_000
+
+    for start_node in range(3):
+        visit_counts, convergence = simulate_random_walk(start_node, n_max)
+        print(f'Start z węzła {start_node} - Odwiedziny: {visit_counts}')
+        plot_convergence(convergence, n_max, start_node)
