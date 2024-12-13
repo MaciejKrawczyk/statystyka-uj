@@ -1,4 +1,3 @@
-from asyncio.windows_events import INFINITE
 from dataclasses import dataclass
 from random import random
 
@@ -26,6 +25,7 @@ class GameOutcome2:
     no_of_turns_won_by_playerA_per_game: list[list[bool]]
     no_of_turns_won_by_playerB_per_game: list[list[bool]]
 
+
 @dataclass
 class GameOutcomeEq:
     probability_of_playerB_winning: float
@@ -34,7 +34,7 @@ class GameOutcomeEq:
 
 def get_probability_of_winning_simulation(playerA_chance: float, playerA_money: int, playerB_money: int,
                                           no_of_games=100, no_of_turns_per_game_loop=1000000000) -> GameOutcome2:
-    print(f"playerA chance: {playerA_chance}, playerA_money: {playerA_money}, playerB_money: {playerB_money}")
+    # print(f"playerA chance: {playerA_chance}, playerA_money: {playerA_money}, playerB_money: {playerB_money}")
     games_won_by_playerA = 0
     games_won_by_playerB = 0
     no_of_turns_per_game = []
@@ -80,7 +80,7 @@ def get_probability_of_winning_simulation(playerA_chance: float, playerA_money: 
         no_of_turns_won_by_playerB_per_game.append(turns_won_by_playerB)
         no_of_playerA_money_per_turn_per_game.append(playerA_money_per_turn)
         no_of_playerB_money_per_turn_per_game.append(playerB_money_per_turn)
-    print(f"games_won_A: {games_won_by_playerA}, games_won_B: {games_won_by_playerB}")
+    # print(f"games_won_A: {games_won_by_playerA}, games_won_B: {games_won_by_playerB}")
     return GameOutcome2(
         probability_of_playerB_winning=games_won_by_playerB / no_of_games,
         probability_of_playerA_winning=games_won_by_playerA / no_of_games,
@@ -97,7 +97,7 @@ def simulate_game(
         playerA_chance: float,
         playerA_money: int,
         playerB_money: int,
-        max_turns: int = 1000
+        max_turns: int = 5000
 ) -> GameOutcome:
     i = 0
     playerA_won_turns = []
@@ -149,7 +149,7 @@ def get_probability_of_winning_equation(playerA_chance_of_winning: float, player
 
 
 def simulate_game_eq(playerA_chance: float, playerA_money: int, playerB_money: int,
-                     max_turns: int = 1000) -> GameOutcome:
+                     max_turns: int = 10000000000) -> GameOutcome:
     p = playerA_chance
     q = 1 - p  # playerB_chance
     a = playerA_money

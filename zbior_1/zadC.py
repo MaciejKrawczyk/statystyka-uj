@@ -20,6 +20,11 @@ for i in range(len(pA)):
     turns, frequencies = zip(*sorted(turns_counter.items()))
     probabilities = [freq / outcome.no_of_games for freq in frequencies]
 
+    # Compute average number of turns
+    total_games = outcome.no_of_games
+    average_turns = sum(turn * freq for turn, freq in zip(turns, frequencies)) / total_games
+    print(f"Average number of turns for pA = {pA[i]}: {average_turns:.2f}")
+
     # Plotting
     plt.figure(figsize=(10, 6))
     plt.bar(turns, probabilities, width=1.0, edgecolor='black', align='center')
