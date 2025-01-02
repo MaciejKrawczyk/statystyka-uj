@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 # Funkcja generująca czasy przychodzenia lub wykonywania zadań
 def generate_interarrival_times(rate, size):
     return -np.log(1 - np.random.uniform(0, 1, size)) / rate
+
 
 # Symulacja procesu kolejkowego z obliczaniem czasu w systemie i liczby zadań w systemie
 def simulate_queue_little(lambda_arrival, lambda_service, simulation_time):
@@ -56,13 +58,14 @@ def simulate_queue_little(lambda_arrival, lambda_service, simulation_time):
 
     return avg_time_in_system, avg_tasks_in_system
 
+
 # Parametry symulacji
 simulation_time = 10_000
 num_simulations = 1000
 scenarios = [
-    (1/20, 1/15, "λA=1/20, λS=1/15"),
-    (1/20, 1/100, "λA=1/20, λS=1/100"),
-    (1/20, 1/5, "λA=1/20, λS=1/5")
+    (1 / 20, 1 / 15, "λA=1/20, λS=1/15"),
+    (1 / 20, 1 / 100, "λA=1/20, λS=1/100"),
+    (1 / 20, 1 / 5, "λA=1/20, λS=1/5")
 ]
 
 # Symulacja i weryfikacja prawa Little’a
@@ -85,7 +88,10 @@ for lambda_arrival, lambda_service, label in scenarios:
 
 # Wyświetlanie wyników
 import pandas as pd
-results_df = pd.DataFrame(results, columns=["Scenario", "E(R) (sredni czas w systemie)", "E(x) (srednia liczba zadan w systemie)", "E(R)*lambda_A (Little)", "lambda_A"])
+
+results_df = pd.DataFrame(results, columns=["Scenario", "E(R) (sredni czas w systemie)",
+                                            "E(x) (srednia liczba zadan w systemie)", "E(R)*lambda_A (Little)",
+                                            "lambda_A"])
 
 # Wykres wyników
 fig, ax = plt.subplots(figsize=(10, 6))
