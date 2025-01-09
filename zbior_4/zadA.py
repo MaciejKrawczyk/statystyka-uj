@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # Parameters
 lambda_rate = 1  # Rate parameter λ [1/min]
-time_end = 10    # Total observation time [min]
+time_end = 90    # Total observation time [min]
 
 # Function to generate exponential samples using inverse transform method
 def generate_exponential_inverse_transform(lambda_rate, size=1):

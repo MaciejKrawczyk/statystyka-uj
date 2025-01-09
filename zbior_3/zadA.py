@@ -13,7 +13,8 @@ n_samples = 100000
 normal_random_numbers = generate_normal_random_numbers(n_samples)
 
 # Plot histogram of generated random numbers
-plt.hist(normal_random_numbers, bins=50, density=True, alpha=0.6, label='Histogram (Generated Data)')
+plt.hist(normal_random_numbers, bins=50, density=False, alpha=0.6, label='Histogram (Generated Data)')
+# density tak dostosowuje wykres, aby sumarycznie, pola wszystkich słupków sumowały sie do 1
 
 # Overlay the analytical normal distribution
 mean = 0
